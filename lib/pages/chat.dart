@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:medipal/constant/images.dart';
 import 'package:medipal/main.dart';
 import 'package:medipal/model/chat_bubble.dart';
+import 'package:medipal/pages/chat_list.dart';
 import 'package:medipal/model/message.dart';
 import 'package:medipal/model/chat_service.dart';
 
