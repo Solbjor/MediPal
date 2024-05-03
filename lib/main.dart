@@ -92,7 +92,6 @@ class HomePage extends StatelessWidget {
             ButtonWidget('Login', '/Login'),
             ButtonWidget('Sign Up', '/SignUp'),
             ButtonWidget('PatientForm', '/PatientForm'),
-            ButtonWidget('PatientPage', '/PatientPage'),
             ButtonWidget('PatientList', '/PatientList'),
             ButtonWidget('Appointmentpage', '/AppointmentPage'),
             ButtonWidget('ChatListPage', '/ChatListPage'),

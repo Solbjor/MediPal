@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:medipal/constant/images.dart';
 import 'package:medipal/main.dart';
+import 'package:medipal/model/chat_bubble.dart';
 import 'package:medipal/model/message.dart';
-import 'package:medipal/pages/chat_service.dart';
+import 'package:medipal/model/chat_service.dart';
 
 
 class ChatScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _ChatScreenState extends State<ChatScreen>{
   //build message list
   Widget _buildMessageList(){
     return StreamBuilder<List<Message>>(
-      stream: _chatService.getMessages(widget.receiverUserEmail, _firebaseAuth.currentUser!.uid), 
+      stream: _chatService.getMessages(widget.receiverUserEmail), 
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text('Error${snapshot.error}');
@@ -112,7 +113,8 @@ class _ChatScreenState extends State<ChatScreen>{
               : CrossAxisAlignment.start,
           children: [
             Text(message.senderEmail),
-            Text(message.message),
+            const SizedBox(height: 5),
+            ChatBubble(message: message.message,),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:medipal/model/chat_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:medipal/constant/images.dart';
@@ -72,12 +73,14 @@ class _ChatListState extends State<ChatListPage> {
   Widget _buildUserListItem(String userEmail, BuildContext context){
     return ListTile(
       title: Text(userEmail),
-      onTap: () {
-      Navigator.pushNamed(
-        context, 
-        '/chat',
-        arguments: {'receiverUserEmail': userEmail},
-      );
+      onTap: () async {
+        final receiverEmail = userEmail; // Get the email from the tapped item
+        await ChatService().sendMessage(receiverEmail, "Initial message");
+        Navigator.pushNamed(
+          context, 
+          '/chat',
+          arguments: {'receiverUserEmail': receiverEmail},
+        );
       }
     );
   }
